@@ -1,11 +1,10 @@
-import * as actionTypes from './actionTypes'
+import * as actionTypes from '../actionTypes'
 
 export default function(state={},action){
-
+  console.log(action)
   switch(action.type){
     case actionTypes.MAKE_CHOCOLATE:
-      return 
-        Object.assign({},state,{ chocolates :
+      return Object.assign({},state,{isChocolatesMade:true},{ chocolates :
           [
             {
               "id" : 1,
@@ -34,7 +33,7 @@ export default function(state={},action){
           ]
         });
       
-    case actionTypes.GIFT_COHOCOLATE:
+    case actionTypes.GIFT_CHOCOLATE:
       var newChocolates=[]
       state.chocolates.forEach((ele,index,arr) => {
         if(ele.id === action.chocolateId){
@@ -42,7 +41,8 @@ export default function(state={},action){
         }
         newChocolates.push(ele)
       })
-      return Object.assign({} ,{chocolates : newChocolates});
+      return Object.assign({} ,{isChocolatesMade:state.isChocolatesMade},{chocolates : newChocolates});
+
     default:
       return state;
   }
