@@ -32,7 +32,7 @@ class App extends Component {
           <h2>Welcome to React - Choclate Store</h2>
         </div>
         
-        <input type="button" value="Make Choclates" style={styles.button} onClick={() => actions.makeChocolates(ingredients)}/>
+        <input type="button" value="GET USERS" disabled={this.props.isFetching} onClick={() => actions.getUsers()}/>
         {
           this.props.isChocolatesMade ? <List chocolates={chocolates} giftChocolates={actions.giftChocolates}/> : null
         }
@@ -42,9 +42,12 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
+  
   return {
-    chocolates:state.chocolates,
-    isChocolatesMade:state.isChocolatesMade
+    chocolates:state.C1.chocolates,
+    isChocolatesMade:state.C1.isChocolatesMade,
+    cars:state.C1.cars,
+    isFetching:state.C1.isFetching
   }
 }
 
